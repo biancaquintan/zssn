@@ -1,0 +1,53 @@
+  [1m[35m (200.9ms)[0m  [1m[35mCREATE DATABASE "_development" ENCODING = 'unicode'[0m
+  [1m[35m (60.4ms)[0m  [1m[35mCREATE DATABASE "_test" ENCODING = 'unicode'[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "zssn_development"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "zssn_test"[0m
+  [1m[35m (48.1ms)[0m  [1m[35mCREATE DATABASE "zssn_development" ENCODING = 'unicode'[0m
+  [1m[35m (49.9ms)[0m  [1m[35mCREATE DATABASE "zssn_test" ENCODING = 'unicode'[0m
+  [1m[35m (50.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "zssn_development"[0m
+  [1m[35m (17.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "zssn_test"[0m
+  [1m[35m (43.7ms)[0m  [1m[35mCREATE DATABASE "zssn_development" ENCODING = 'unicode'[0m
+  [1m[35m (43.0ms)[0m  [1m[35mCREATE DATABASE "zssn_test" ENCODING = 'unicode'[0m
+Started GET "/" for 127.0.0.1 at 2023-03-29 15:53:19 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/bsquintan/.rvm/gems/ruby-3.2.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/bsquintan/.rvm/gems/ruby-3.2.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 12.7ms | Allocations: 633)
+Completed 200 OK in 74ms (Views: 46.8ms | ActiveRecord: 0.0ms | Allocations: 5211)
+
+
+Started GET "/" for ::1 at 2023-03-29 16:34:33 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/bsquintan/.rvm/gems/ruby-3.2.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/bsquintan/.rvm/gems/ruby-3.2.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.7ms | Allocations: 489)
+Completed 200 OK in 22ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 3336)
+
+
+Started GET "/" for ::1 at 2023-03-29 16:35:35 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/bsquintan/.rvm/gems/ruby-3.2.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/bsquintan/.rvm/gems/ruby-3.2.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.4ms | Allocations: 489)
+Completed 200 OK in 13ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 3336)
+
+
+  [1m[35m (19.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "zssn_development"[0m
+  [1m[35m (22.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "zssn_test"[0m
+  [1m[35m (43.5ms)[0m  [1m[35mCREATE DATABASE "zssn_development" ENCODING = 'unicode'[0m
+  [1m[35m (51.6ms)[0m  [1m[35mCREATE DATABASE "zssn_test" ENCODING = 'unicode'[0m
+  [1m[35m (45.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "zssn_development"[0m
+  [1m[35m (22.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "zssn_test"[0m
+  [1m[35m (98.9ms)[0m  [1m[35mCREATE DATABASE "zssn_development" ENCODING = 'unicode'[0m
+  [1m[35m (52.9ms)[0m  [1m[35mCREATE DATABASE "zssn_test" ENCODING = 'unicode'[0m
+Started GET "/" for ::1 at 2023-03-29 16:39:51 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/bsquintan/.rvm/gems/ruby-3.2.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/bsquintan/.rvm/gems/ruby-3.2.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.0ms | Allocations: 489)
+Completed 200 OK in 13ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 3336)
+
+
+Started GET "/" for ::1 at 2023-03-29 16:39:55 -0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/bsquintan/.rvm/gems/ruby-3.2.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/bsquintan/.rvm/gems/ruby-3.2.1/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | Allocations: 272)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms | Allocations: 806)
+
+

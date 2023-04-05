@@ -1,5 +1,5 @@
 class Api::V1::FirstZombieApocalypsesController < ApplicationController
-  before_action :set_user, only: [:update_location]
+  before_action :set_user, :set_inventory, only: [:update_location, :update_inventory, :report_infection]
 
   # POST /api/v1/users/register
   def register_user
@@ -21,11 +21,40 @@ class Api::V1::FirstZombieApocalypsesController < ApplicationController
       render json: @user.errors, status: :unprocessable_entity
     end
   end
+  
+  # PATCH/PUT /api/v1/users/:id/update_inventory
+  def update_inventory
+    method = params[:method]
+    item = Item.find_by_name(params[:item_name])
+    user_items = @inventory.items.to_a
+
+    if method === 'add'
+      @inventory.items.push(item)
+    elsif method === 'remove'
+      if user_items.include?(item)
+        user_items.delete_at(user_items.index(item))
+        @inventory.update!(items: user_items)
+      else
+        render :json => {:message => "This user doesn't have any #{item.name} in inventory to delete."}
+        return
+      end
+    else
+      render :json => {:message => "Unexpected method param for this request. You can try 'add' or 'remove' methods."}
+      return
+    end
+    
+    render json: @inventory.items.sort_by(&:id)
+    
+  end
 
   private
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_inventory
+    @inventory = Inventory.find_by(user_id: @user.id)
   end
 
   def user_params

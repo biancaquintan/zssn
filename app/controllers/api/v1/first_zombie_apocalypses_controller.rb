@@ -1,12 +1,17 @@
 class Api::V1::FirstZombieApocalypsesController < ApplicationController
-  before_action :set_user, :set_inventory, only: [:update_location, :update_inventory, :report_infection]
+  before_action :set_user, :set_inventory, only: [:update_location, :update_inventory]
 
   # POST /api/v1/users/register
   def register_user
     @user = User.new(user_params)
-
+    
     if @user.save
-      render json: @user, status: :created
+      @inventory = Inventory.new(user_id: @user.id)
+      if @inventory.save
+        render json: @user, status: :created
+      else
+        render json: @inventory.errors, status: :unprocessable_entity
+      end
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -44,6 +49,17 @@ class Api::V1::FirstZombieApocalypsesController < ApplicationController
     end
     
     render json: @inventory.items.sort_by(&:id)
+    
+  end
+
+  # PATCH/PUT /api/v1/users/report_infection
+  def report_infection
+
+  end
+
+  # PATCH/PUT /api/v1/users/perform_barter
+  def perform_barter
+    #verificar se os usuarios nao estao infectados
     
   end
 

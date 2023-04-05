@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  has_one :inventory
+  has_one :inventory, dependent: :destroy
 end

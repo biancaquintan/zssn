@@ -52,18 +52,69 @@ class Api::V1::FirstZombieApocalypsesController < ApplicationController
     
   end
 
-  # PATCH/PUT /api/v1/users/report_infection
-  def report_infection
-
-  end
-
   # PATCH/PUT /api/v1/users/perform_barter
   def perform_barter
-    #verificar se os usuarios nao estao infectados
-    
+    #first_user
+    user_1 = User.find(params[:first_user][:id])
+    items_1 = params[:first_user][:items]
+    inventory_1 = user_1.inventory.items.to_a
+    #second_user
+    user_2 = User.find(params[:second_user][:id])
+    items_2 = params[:second_user][:items]
+    inventory_2 = user_2.inventory.items.to_a
+
+    unless user_1.infection? || user_2.infection?
+      
+      if validate_user_items(user_1, items_1) && validate_user_items(user_2, items_2) && validate_barter(items_1, items_2)
+
+        items_1.each do |item| 
+          item[:amount].times {            
+            inventory_1.delete_at(inventory_1.index(Item.find_by_name(item[:name])))
+            user_1.inventory.update!(items: inventory_1)
+            inventory_2 << Item.find_by_name(item[:name])
+          }
+        end
+
+        items_2.each do |item| 
+          item[:amount].times {
+            inventory_2.delete_at(inventory_2.index(Item.find_by_name(item[:name])))
+            user_2.inventory.update!(items: inventory_2)
+            inventory_1 << Item.find_by_name(item[:name])
+          }
+        end
+
+        render :json => {:message => "Successful barter!"}
+
+      else
+        render :json => {:message => "Items doesn't match the inventory or total points per user is different"}
+      end
+    else
+      render :json => {:message => "Infected users cannot trade."}
+    end
   end
 
   private
+
+  def validate_user_items(user, items)
+    items.each do |item|  
+      return false if user.inventory.items.to_a.count(Item.find_by_name(item[:name])) < item[:amount]
+    end
+  end
+
+  def validate_barter(items_1, items_2)
+    sum_1 = 0
+    sum_2 = 0
+    
+    items_1.each do |item| 
+      sum_1 += Item.find_by_name(item[:name]).value * item[:amount]
+    end
+
+    items_2.each do |item| 
+      sum_2 += Item.find_by_name(item[:name]).value * item[:amount]
+    end
+    
+    return sum_1 == sum_2
+  end
 
   def set_user
     @user = User.find(params[:id])

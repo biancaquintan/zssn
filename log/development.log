@@ -8629,3 +8629,388 @@ Processing by Api::V1::FirstZombieApocalypsesController#perform_barter as */*
 Completed 200 OK in 51748ms (Views: 0.3ms | ActiveRecord: 71.8ms | Allocations: 2642482)
 
 
+Started GET "/api/v1/users/users_data_report" for ::1 at 2023-04-06 18:59:14 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FirstZombieApocalypsesController#users_data_report as */*
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2258)
+
+
+  
+NameError (undefined local variable or method `reports' for #<Api::V1::FirstZombieApocalypsesController:0x00000000008c00>):
+  
+app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `users_data_report'
+Started GET "/api/v1/users/users_data_report" for ::1 at 2023-04-06 18:59:34 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#users_data_report as */*
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 201)
+
+
+  
+TypeError (String can't be coerced into Integer):
+  
+app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `%'
+app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `users_data_report'
+Started GET "/api/v1/users/users_data_report" for ::1 at 2023-04-06 18:59:57 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#users_data_report as */*
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 343)
+
+
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 01:05:09 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:103:in `warn_infection'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 14.3ms | Allocations: 11737)
+
+
+  
+NoMethodError (undefined method `infection?' for nil:NilClass):
+  
+app/controllers/api/v1/first_zombie_apocalypses_controller.rb:106:in `warn_infection'
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 01:05:34 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:103:in `warn_infection'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+Completed 200 OK in 18ms (Views: 0.5ms | ActiveRecord: 4.7ms | Allocations: 4415)
+
+
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Update (0.8ms)[0m  [1m[33mUPDATE "items" SET "value" = $1, "updated_at" = $2 WHERE "items"."id" = $3[0m  [["value", 10], ["updated_at", "2023-04-07 04:15:06.796950"], ["id", 4]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Update (0.4ms)[0m  [1m[33mUPDATE "items" SET "value" = $1, "updated_at" = $2 WHERE "items"."id" = $3[0m  [["value", 11], ["updated_at", "2023-04-07 04:15:35.849729"], ["id", 4]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" ORDER BY "items"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mItem Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Munição"], ["LIMIT", 1]]
+  [1m[36mItem Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Munição99"], ["LIMIT", 1]]
+  [1m[36mItem Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "items" WHERE "items"."name" = $1 AND "items"."value" = $2 LIMIT $3[0m  [["name", "Munição"], ["value", 1], ["LIMIT", 1]]
+  [1m[36mItem Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "items" WHERE "items"."name" = $1 AND "items"."value" = $2 LIMIT $3[0m  [["name", "Munição"], ["value", 10], ["LIMIT", 1]]
+  [1m[36mItem Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "items" WHERE "items"."name" = $1 AND "items"."value" = $2 LIMIT $3[0m  [["name", "Munição"], ["value", 11], ["LIMIT", 1]]
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 AND "items"."value" = $2 /* loading for inspect */ LIMIT $3[0m  [["name", "Munição"], ["value", 10], ["LIMIT", 11]]
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 AND "items"."value" = $2 /* loading for inspect */ LIMIT $3[0m  [["name", "Munição"], ["value", 10], ["LIMIT", 11]]
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 AND "items"."value" = $2[0m  [["name", "Munição"], ["value", 10]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3028883319484379910)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateInfectionControls (20230407051852)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.9ms)[0m  [1m[35mCREATE TABLE "infection_controls" ("id" bigserial primary key, "user_id" bigint NOT NULL, "authors" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e6024d8abb"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE INDEX "index_infection_controls_on_user_id" ON "infection_controls" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230407051852"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3028883319484379910)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 02:27:42 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.5ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+  [1m[36mInfectionControl Create (1.0ms)[0m  [1m[32mINSERT INTO "infection_controls" ("user_id", "authors", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 8], ["authors", nil], ["created_at", "2023-04-07 05:27:42.316796"], ["updated_at", "2023-04-07 05:27:42.316796"]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+Completed 500 Internal Server Error in 144ms (ActiveRecord: 17.6ms | Allocations: 18616)
+
+
+  
+NoMethodError (undefined method `include?' for nil:NilClass):
+  
+app/controllers/api/v1/first_zombie_apocalypses_controller.rb:108:in `warn_infection'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mInfectionControl Load (0.4ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 18:27:30 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.4ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+Completed 200 OK in 34ms (Views: 0.6ms | ActiveRecord: 11.1ms | Allocations: 9260)
+
+
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 18:28:01 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>9, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>9, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.3ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 1219)
+
+
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 18:29:38 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.4ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+Completed 200 OK in 88625ms (Views: 0.5ms | ActiveRecord: 13.8ms | Allocations: 84391)
+
+
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 18:31:11 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.4ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+Completed 500 Internal Server Error in 50679ms (ActiveRecord: 10.9ms | Allocations: 118411)
+
+
+  
+NoMethodError (undefined method `<<' for nil:NilClass):
+  
+app/controllers/api/v1/first_zombie_apocalypses_controller.rb:110:in `warn_infection'
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 18:32:23 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.4ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+Completed 500 Internal Server Error in 65229ms (ActiveRecord: 16.1ms | Allocations: 84390)
+
+
+  
+NoMethodError (undefined method `<<' for nil:NilClass):
+  
+app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 18:34:15 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.5ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+Completed 200 OK in 6932ms (Views: 0.4ms | ActiveRecord: 7.3ms | Allocations: 81179)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mInfectionControl Load (0.2ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 18:35:48 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.3ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 9.7ms | Allocations: 6716)
+
+
+  
+NoMethodError (undefined method `push' for nil:NilClass):
+  
+app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 18:36:02 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.3ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+Completed 200 OK in 35ms (Views: 0.2ms | ActiveRecord: 10.2ms | Allocations: 6701)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mInfectionControl Load (0.2ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 18:42:14 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.5ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+  [1m[36mCACHE User Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:112:in `warn_infection'
+Completed 200 OK in 44586ms (Views: 0.4ms | ActiveRecord: 10.1ms | Allocations: 505184)
+
+
+  [1m[36mInfectionControl Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "infection_controls"[0m
+  [1m[36mInfectionControl Load (0.2ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" ORDER BY "infection_controls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mInfectionControl Load (0.3ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" ORDER BY "infection_controls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mInfectionControl Load (0.4ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" ORDER BY "infection_controls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mInfectionControl Update (0.5ms)[0m  [1m[33mUPDATE "infection_controls" SET "authors" = $1, "updated_at" = $2 WHERE "infection_controls"."id" = $3[0m  [["authors", "[1]"], ["updated_at", "2023-04-07 21:46:25.923810"], ["id", 1]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mInfectionControl Load (0.4ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" ORDER BY "infection_controls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mInfectionControl Load (0.3ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" ORDER BY "infection_controls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mInfectionControl Load (0.4ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" ORDER BY "infection_controls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mInfectionControl Load (0.3ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" ORDER BY "infection_controls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mInfectionControl Load (0.5ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" ORDER BY "infection_controls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3028883319484379910)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateInfectionControls (20230407051852)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.7ms)[0m  [1m[35mDROP TABLE "infection_controls"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (1.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20230407051852"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(3028883319484379910)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3028883319484379910)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateInfectionControls (20230407051852)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.1ms)[0m  [1m[35mCREATE TABLE "infection_controls" ("id" bigserial primary key, "user_id" bigint NOT NULL, "authors" text[] DEFAULT '{}', "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e6024d8abb"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE INDEX "index_infection_controls_on_user_id" ON "infection_controls" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230407051852"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3028883319484379910)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mInfectionControl Load (0.5ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" ORDER BY "infection_controls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 18:58:21 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.4ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+  [1m[36mInfectionControl Create (1.1ms)[0m  [1m[32mINSERT INTO "infection_controls" ("user_id", "authors", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 8], ["authors", "{}"], ["created_at", "2023-04-07 21:58:22.076201"], ["updated_at", "2023-04-07 21:58:22.076201"]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+Completed 200 OK in 32001ms (Views: 0.7ms | ActiveRecord: 14.6ms | Allocations: 94578)
+
+
+  [1m[36mInfectionControl Load (0.3ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" ORDER BY "infection_controls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 19:00:01 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>7, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>7, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.4ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+  [1m[36mInfectionControl Update (1.9ms)[0m  [1m[33mUPDATE "infection_controls" SET "authors" = $1, "updated_at" = $2 WHERE "infection_controls"."id" = $3[0m  [["authors", "{7}"], ["updated_at", "2023-04-07 22:00:01.622777"], ["id", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+Completed 200 OK in 43ms (Views: 0.2ms | ActiveRecord: 11.2ms | Allocations: 11528)
+
+
+  [1m[36mInfectionControl Load (0.2ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" ORDER BY "infection_controls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 19:00:24 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>9, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>9, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.3ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+  [1m[36mInfectionControl Update (0.4ms)[0m  [1m[33mUPDATE "infection_controls" SET "authors" = $1, "updated_at" = $2 WHERE "infection_controls"."id" = $3[0m  [["authors", "{7,9}"], ["updated_at", "2023-04-07 22:00:24.783277"], ["id", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 7.7ms | Allocations: 3726)
+
+
+  [1m[36mInfectionControl Load (0.2ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" ORDER BY "infection_controls"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Pluck (0.4ms)[0m  [1m[34mSELECT "users"."id" FROM "users"[0m
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 19:01:18 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>10, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>10, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (4.9ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+  [1m[36mInfectionControl Update (0.4ms)[0m  [1m[33mUPDATE "infection_controls" SET "authors" = $1, "updated_at" = $2 WHERE "infection_controls"."id" = $3[0m  [["authors", "{7,9,10}"], ["updated_at", "2023-04-07 22:01:18.798456"], ["id", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:111:in `warn_infection'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:115:in `warn_infection'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "infection" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["infection", true], ["updated_at", "2023-04-07 22:01:18.816306"], ["id", 8]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:115:in `warn_infection'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:115:in `warn_infection'
+Completed 200 OK in 40ms (Views: 0.2ms | ActiveRecord: 14.8ms | Allocations: 5687)
+
+
+Started PATCH "/api/v1/users/warn_infection" for ::1 at 2023-04-07 19:01:28 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#warn_infection as */*
+  Parameters: {"author_id"=>8, "accused_user_id"=>8, "first_zombie_apocalypse"=>{"author_id"=>8, "accused_user_id"=>8}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:104:in `warn_infection'
+  [1m[36mInfectionControl Load (0.3ms)[0m  [1m[34mSELECT "infection_controls".* FROM "infection_controls" WHERE "infection_controls"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:105:in `warn_infection'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1218)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Started PATCH "/api/v1/users/8/update_inventory" for ::1 at 2023-04-07 19:03:54 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#update_inventory as */*
+  Parameters: {"method"=>"add", "item_name"=>"Comida", "id"=>"8", "first_zombie_apocalypse"=>{"method"=>"add", "item_name"=>"Comida"}}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:163:in `set_user'
+  [1m[36mInventory Load (0.5ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:167:in `set_inventory'
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Comida"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:33:in `update_inventory'
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 3]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:34:in `update_inventory'
+Completed 200 OK in 70ms (Views: 0.6ms | ActiveRecord: 16.9ms | Allocations: 15757)
+
+
+Started PATCH "/api/v1/users/8/update_inventory" for ::1 at 2023-04-07 19:04:19 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#update_inventory as */*
+  Parameters: {"method"=>"add", "item_name"=>"Comida", "id"=>"8", "first_zombie_apocalypse"=>{"method"=>"add", "item_name"=>"Comida"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:163:in `set_user'
+  [1m[36mInventory Load (0.3ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:167:in `set_inventory'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Comida"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:33:in `update_inventory'
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 3]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:34:in `update_inventory'
+Completed 200 OK in 51ms (Views: 0.2ms | ActiveRecord: 12.9ms | Allocations: 13116)
+
+

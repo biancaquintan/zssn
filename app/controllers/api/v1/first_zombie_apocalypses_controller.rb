@@ -33,18 +33,23 @@ class Api::V1::FirstZombieApocalypsesController < ApplicationController
     item = Item.find_by_name(params[:item_name])
     user_items = @inventory.items.to_a
 
-    if method === 'add'
-      @inventory.items.push(item)
-    elsif method === 'remove'
-      if user_items.include?(item)
-        user_items.delete_at(user_items.index(item))
-        @inventory.update!(items: user_items)
+    unless @user.infection?
+      if method === 'add'
+        @inventory.items.push(item)
+      elsif method === 'remove'
+        if user_items.include?(item)
+          user_items.delete_at(user_items.index(item))
+          @inventory.update!(items: user_items)
+        else
+          render :json => {:message => "This user doesn't have any #{item.name} in inventory to delete."}
+          return
+        end
       else
-        render :json => {:message => "This user doesn't have any #{item.name} in inventory to delete."}
+        render :json => {:message => "Unexpected method param for this request. You can try 'add' or 'remove' methods."}
         return
       end
     else
-      render :json => {:message => "Unexpected method param for this request. You can try 'add' or 'remove' methods."}
+      render :json => {:message => "Infected users cannot update inventory."}
       return
     end
     
@@ -84,12 +89,38 @@ class Api::V1::FirstZombieApocalypsesController < ApplicationController
         end
 
         render :json => {:message => "Successful barter!"}
-
+        
       else
         render :json => {:message => "Items doesn't match the inventory or total points per user is different"}
       end
     else
       render :json => {:message => "Infected users cannot trade."}
+    end
+  end
+  
+  # PATCH/PUT /api/v1/users/report_infection
+  def warn_infection
+    author = params[:author_id]
+    accused = User.find(params[:accused_user_id])
+    infection_control = InfectionControl.find_or_create_by(user: accused)
+    
+    unless accused.infection?
+      unless infection_control.authors.include?(author)
+        
+        infection_control.authors << author
+        infection_control.save!
+        
+        if infection_control.authors.count == 3
+          accused.update!(infection: true)
+        end
+
+        render :json => {:message => "Record created successfully!"}
+
+      else
+        render :json => {:message => "You already recorded this information earlier."}
+      end
+    else
+      render :json => {:message => "This user is already registered as infected in the system."}
     end
   end
 

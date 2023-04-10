@@ -124,6 +124,18 @@ class Api::V1::FirstZombieApocalypsesController < ApplicationController
     end
   end
 
+  # GET /api/v1/users/users_data_report
+  def users_data_report
+    @reports = {}
+    @reports[:infections] = Report.calc_average_infections[:infection]
+    @reports[:uninfections] = Report.calc_average_infections[:uninfection]
+    # average_items_users are not including infected user data 
+    @reports[:average_items_users] = Report.calc_average_items_users
+    @reports[:total_lost_by_infected] = Report.calc_total_lost
+
+    render json: @reports, status: :ok
+  end
+
   private
 
   def validate_user_items(user, items)

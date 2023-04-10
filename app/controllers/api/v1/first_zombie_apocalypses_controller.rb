@@ -31,30 +31,14 @@ class Api::V1::FirstZombieApocalypsesController < ApplicationController
   def update_inventory
     method = params[:method]
     item = Item.find_by_name(params[:item_name])
-    user_items = @inventory.items.to_a
+    
+    update_method = Inventory.update(@user, @inventory, method, item)
 
-    unless @user.infection?
-      if method === 'add'
-        @inventory.items.push(item)
-      elsif method === 'remove'
-        if user_items.include?(item)
-          user_items.delete_at(user_items.index(item))
-          @inventory.update!(items: user_items)
-        else
-          render :json => {:message => "This user doesn't have any #{item.name} in inventory to delete."}
-          return
-        end
-      else
-        render :json => {:message => "Unexpected method param for this request. You can try 'add' or 'remove' methods."}
-        return
-      end
+    unless update_method[:error_message].nil?
+      render json: update_method
     else
-      render :json => {:message => "Infected users cannot update inventory."}
-      return
+      render json: @inventory.items.sort_by(&:id)
     end
-    
-    render json: @inventory.items.sort_by(&:id)
-    
   end
 
   # PATCH/PUT /api/v1/users/perform_barter
@@ -62,36 +46,36 @@ class Api::V1::FirstZombieApocalypsesController < ApplicationController
     #first_user
     user_1 = User.find(params[:first_user][:id])
     items_1 = params[:first_user][:items]
-    inventory_1 = user_1.inventory.items.to_a
+    inventory_1 = user_1.inventory
     #second_user
     user_2 = User.find(params[:second_user][:id])
     items_2 = params[:second_user][:items]
-    inventory_2 = user_2.inventory.items.to_a
+    inventory_2 = user_2.inventory
 
     unless user_1.infection? || user_2.infection?
       
       if validate_user_items(user_1, items_1) && validate_user_items(user_2, items_2) && validate_barter(items_1, items_2)
 
         items_1.each do |item| 
-          item[:amount].times {            
-            inventory_1.delete_at(inventory_1.index(Item.find_by_name(item[:name])))
-            user_1.inventory.update!(items: inventory_1)
-            inventory_2 << Item.find_by_name(item[:name])
+          item[:amount].times {       
+            Inventory.update(user_1, inventory_1, "remove", Item.find_by_name(item[:name]))
+            Inventory.update(user_2, inventory_2, "add", Item.find_by_name(item[:name]))
           }
         end
 
         items_2.each do |item| 
           item[:amount].times {
-            inventory_2.delete_at(inventory_2.index(Item.find_by_name(item[:name])))
-            user_2.inventory.update!(items: inventory_2)
-            inventory_1 << Item.find_by_name(item[:name])
+            Inventory.update(user_2, inventory_2, "remove", Item.find_by_name(item[:name]))
+            Inventory.update(user_1, inventory_1, "add", Item.find_by_name(item[:name]))
           }
         end
-
-        render :json => {:message => "Successful barter!"}
         
+        render :json => {:message => "Successful barter!"}
+      
       else
+        
         render :json => {:message => "Items doesn't match the inventory or total points per user is different"}
+      
       end
     else
       render :json => {:message => "Infected users cannot trade."}

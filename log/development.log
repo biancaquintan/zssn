@@ -14955,3 +14955,319 @@ Completed 200 OK in 2866ms (Views: 8.0ms | ActiveRecord: 216.3ms | Allocations: 
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
   [1m[36mInventory Load (0.2ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 15], ["LIMIT", 1]]
   [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 10]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Wanda"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Wanda"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Wander"], ["LIMIT", 1]]
+  [1m[36mUser Create (5.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "age", "gender", "last_location", "infection", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Wander"], ["age", nil], ["gender", nil], ["last_location", nil], ["infection", nil], ["created_at", "2023-04-10 21:18:09.666178"], ["updated_at", "2023-04-10 21:18:09.666178"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["name", "Wander"], ["id", 17], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Wander"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3028883319484379910)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (6.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeInfectionDefaultValueToUsers (20230410211727)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.4ms)[0m  [1m[35mALTER TABLE "users" ALTER COLUMN "infection" TYPE boolean, ALTER COLUMN "infection" SET DEFAULT FALSE[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230410211727"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3028883319484379910)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Wander"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Wander"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Wanderlea"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "age", "gender", "last_location", "infection", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Wanderlea"], ["age", nil], ["gender", nil], ["last_location", nil], ["infection", false], ["created_at", "2023-04-10 21:18:55.162700"], ["updated_at", "2023-04-10 21:18:55.162700"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/v1/users/register" for ::1 at 2023-04-10 19:41:24 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FirstZombieApocalypsesController#register_user as */*
+  Parameters: {"user"=>{"name"=>"Vera", "age"=>18, "gender"=>"Female", "infection"=>false, "last_location"=>"(159,311)"}, "first_zombie_apocalypse"=>{"user"=>{"name"=>"Vera", "age"=>18, "gender"=>"Female", "infection"=>false, "last_location"=>"(159,311)"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:8:in `register_user'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Vera"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:8:in `register_user'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "age", "gender", "last_location", "infection", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Vera"], ["age", 18], ["gender", "Female"], ["last_location", "(159,311)"], ["infection", false], ["created_at", "2023-04-10 22:41:24.884630"], ["updated_at", "2023-04-10 22:41:24.884630"]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:8:in `register_user'
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:8:in `register_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:10:in `register_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:10:in `register_user'
+  [1m[36mInventory Create (2.1ms)[0m  [1m[32mINSERT INTO "inventories" ("user_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 19], ["created_at", "2023-04-10 22:41:24.911885"], ["updated_at", "2023-04-10 22:41:24.911885"]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:10:in `register_user'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:10:in `register_user'
+Completed 201 Created in 56ms (Views: 0.4ms | ActiveRecord: 17.7ms | Allocations: 22977)
+
+
+Started PATCH "/api/v1/users/10/update_location" for ::1 at 2023-04-10 19:41:51 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#update_location as */*
+  Parameters: {"last_location"=>"(27,119)", "id"=>"10", "first_zombie_apocalypse"=>{"last_location"=>"(27,119)"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:147:in `set_user'
+  [1m[36mInventory Load (0.4ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:151:in `set_inventory'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:23:in `update_location'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["name", "Ana"], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:23:in `update_location'
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "last_location" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["last_location", "(27,119)"], ["updated_at", "2023-04-10 22:41:51.323012"], ["id", 10]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:23:in `update_location'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:23:in `update_location'
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 3.9ms | Allocations: 4446)
+
+
+Started PATCH "/api/v1/users/11/update_inventory" for ::1 at 2023-04-10 19:42:16 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#update_inventory as */*
+  Parameters: {"method"=>"add", "item_name"=>"Medicamentos", "id"=>"11", "first_zombie_apocalypse"=>{"method"=>"add", "item_name"=>"Medicamentos"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:147:in `set_user'
+  [1m[36mInventory Load (0.2ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:151:in `set_inventory'
+  [1m[36mItem Load (5.9ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Medicamentos"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:33:in `update_inventory'
+  [1m[36mItem Load (2.1ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 6]]
+  ↳ app/models/inventory.rb:8:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mInventoryItem Create (1.4ms)[0m  [1m[32mINSERT INTO "inventory_items" ("inventory_id", "item_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["inventory_id", 6], ["item_id", 3], ["created_at", "2023-04-10 22:42:16.651516"], ["updated_at", "2023-04-10 22:42:16.651516"]]
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/inventory.rb:12:in `update'
+Completed 200 OK in 60ms (Views: 2.3ms | ActiveRecord: 16.8ms | Allocations: 15749)
+
+
+Started PATCH "/api/v1/users/11/update_inventory" for ::1 at 2023-04-10 19:42:32 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#update_inventory as */*
+  Parameters: {"method"=>"remove", "item_name"=>"Medicamentos", "id"=>"11", "first_zombie_apocalypse"=>{"method"=>"remove", "item_name"=>"Medicamentos"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:147:in `set_user'
+  [1m[36mInventory Load (2.3ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:151:in `set_inventory'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Medicamentos"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:33:in `update_inventory'
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 6]]
+  ↳ app/models/inventory.rb:8:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Load (1.2ms)[0m  [1m[34mSELECT "inventory_items".* FROM "inventory_items" WHERE "inventory_items"."inventory_id" = $1 AND "inventory_items"."item_id" = $2[0m  [["inventory_id", 6], ["item_id", 3]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Destroy (0.3ms)[0m  [1m[31mDELETE FROM "inventory_items" WHERE "inventory_items"."id" = $1[0m  [["id", 231]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Destroy (0.3ms)[0m  [1m[31mDELETE FROM "inventory_items" WHERE "inventory_items"."id" = $1[0m  [["id", 230]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Create (0.4ms)[0m  [1m[32mINSERT INTO "inventory_items" ("inventory_id", "item_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["inventory_id", 6], ["item_id", 3], ["created_at", "2023-04-10 22:42:32.661899"], ["updated_at", "2023-04-10 22:42:32.661899"]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/inventory.rb:16:in `update'
+Completed 200 OK in 41ms (Views: 1.1ms | ActiveRecord: 12.3ms | Allocations: 8948)
+
+
+Started PATCH "/api/v1/users/17/update_inventory" for ::1 at 2023-04-10 19:43:54 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#update_inventory as */*
+  Parameters: {"method"=>"remove", "item_name"=>"Medicamentos", "id"=>"17", "first_zombie_apocalypse"=>{"method"=>"remove", "item_name"=>"Medicamentos"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:147:in `set_user'
+  [1m[36mInventory Load (0.3ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:151:in `set_inventory'
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Medicamentos"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:33:in `update_inventory'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.9ms | Allocations: 1577)
+
+
+  
+NoMethodError (undefined method `items' for nil:NilClass):
+  
+app/models/inventory.rb:8:in `update'
+app/controllers/api/v1/first_zombie_apocalypses_controller.rb:35:in `update_inventory'
+Started PATCH "/api/v1/users/17/update_inventory" for ::1 at 2023-04-10 19:44:09 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#update_inventory as */*
+  Parameters: {"method"=>"add", "item_name"=>"Medicamentos", "id"=>"17", "first_zombie_apocalypse"=>{"method"=>"add", "item_name"=>"Medicamentos"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:147:in `set_user'
+  [1m[36mInventory Load (0.3ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:151:in `set_inventory'
+  [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Medicamentos"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:33:in `update_inventory'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 2.3ms | Allocations: 1546)
+
+
+  
+NoMethodError (undefined method `items' for nil:NilClass):
+  
+app/models/inventory.rb:8:in `update'
+app/controllers/api/v1/first_zombie_apocalypses_controller.rb:35:in `update_inventory'
+Started PATCH "/api/v1/users/13/update_inventory" for ::1 at 2023-04-10 19:44:17 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#update_inventory as */*
+  Parameters: {"method"=>"add", "item_name"=>"Medicamentos", "id"=>"13", "first_zombie_apocalypse"=>{"method"=>"add", "item_name"=>"Medicamentos"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:147:in `set_user'
+  [1m[36mInventory Load (0.3ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:151:in `set_inventory'
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Medicamentos"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:33:in `update_inventory'
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 8]]
+  ↳ app/models/inventory.rb:8:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mInventoryItem Create (0.4ms)[0m  [1m[32mINSERT INTO "inventory_items" ("inventory_id", "item_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["inventory_id", 8], ["item_id", 3], ["created_at", "2023-04-10 22:44:17.890053"], ["updated_at", "2023-04-10 22:44:17.890053"]]
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/inventory.rb:12:in `update'
+Completed 200 OK in 17ms (Views: 0.6ms | ActiveRecord: 7.4ms | Allocations: 4808)
+
+
+Started PATCH "/api/v1/users/13/update_inventory" for ::1 at 2023-04-10 19:44:24 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#update_inventory as */*
+  Parameters: {"method"=>"add", "item_name"=>"Água", "id"=>"13", "first_zombie_apocalypse"=>{"method"=>"add", "item_name"=>"Água"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:147:in `set_user'
+  [1m[36mInventory Load (0.2ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:151:in `set_inventory'
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Água"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:33:in `update_inventory'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 8]]
+  ↳ app/models/inventory.rb:8:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mInventoryItem Create (0.3ms)[0m  [1m[32mINSERT INTO "inventory_items" ("inventory_id", "item_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["inventory_id", 8], ["item_id", 1], ["created_at", "2023-04-10 22:44:24.455829"], ["updated_at", "2023-04-10 22:44:24.455829"]]
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/inventory.rb:12:in `update'
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 4879)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mInventory Load (0.3ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 11], ["LIMIT", 1]]
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 6]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mInventory Load (0.6ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 13], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 8]]
+Started PATCH "/api/v1/users/perform_barter" for ::1 at 2023-04-10 19:46:24 -0300
+Processing by Api::V1::FirstZombieApocalypsesController#perform_barter as */*
+  Parameters: {"first_user"=>{"id"=>13, "items"=>[{"name"=>"Água", "amount"=>1}]}, "second_user"=>{"id"=>11, "items"=>[{"name"=>"Munição", "amount"=>2}, {"name"=>"Medicamentos", "amount"=>1}]}, "first_zombie_apocalypse"=>{"first_user"=>{"id"=>13, "items"=>[{"name"=>"Água", "amount"=>1}]}, "second_user"=>{"id"=>11, "items"=>[{"name"=>"Munição", "amount"=>2}, {"name"=>"Medicamentos", "amount"=>1}]}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:47:in `perform_barter'
+  [1m[36mInventory Load (0.2ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:49:in `perform_barter'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:51:in `perform_barter'
+  [1m[36mInventory Load (0.2ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:53:in `perform_barter'
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 8]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:127:in `block in validate_user_items'
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Água"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:127:in `block in validate_user_items'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 6]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:127:in `block in validate_user_items'
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Munição"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:127:in `block in validate_user_items'
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Medicamentos"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:127:in `block in validate_user_items'
+  [1m[36mCACHE Item Load (0.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Água"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:136:in `block in validate_barter'
+  [1m[36mCACHE Item Load (0.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Munição"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:140:in `block in validate_barter'
+  [1m[36mCACHE Item Load (0.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Medicamentos"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:140:in `block in validate_barter'
+  [1m[36mCACHE Item Load (0.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Água"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:61:in `block (2 levels) in perform_barter'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Load (0.2ms)[0m  [1m[34mSELECT "inventory_items".* FROM "inventory_items" WHERE "inventory_items"."inventory_id" = $1 AND "inventory_items"."item_id" = $2[0m  [["inventory_id", 8], ["item_id", 1]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Destroy (0.3ms)[0m  [1m[31mDELETE FROM "inventory_items" WHERE "inventory_items"."id" = $1[0m  [["id", 234]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Água"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:62:in `block (2 levels) in perform_barter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mInventoryItem Create (0.4ms)[0m  [1m[32mINSERT INTO "inventory_items" ("inventory_id", "item_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["inventory_id", 6], ["item_id", 1], ["created_at", "2023-04-10 22:46:24.618284"], ["updated_at", "2023-04-10 22:46:24.618284"]]
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mItem Load (0.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Munição"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:68:in `block (2 levels) in perform_barter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Load (0.2ms)[0m  [1m[34mSELECT "inventory_items".* FROM "inventory_items" WHERE "inventory_items"."inventory_id" = $1 AND "inventory_items"."item_id" = $2[0m  [["inventory_id", 6], ["item_id", 4]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Destroy (0.3ms)[0m  [1m[31mDELETE FROM "inventory_items" WHERE "inventory_items"."id" = $1[0m  [["id", 228]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Destroy (0.3ms)[0m  [1m[31mDELETE FROM "inventory_items" WHERE "inventory_items"."id" = $1[0m  [["id", 229]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Create (0.4ms)[0m  [1m[32mINSERT INTO "inventory_items" ("inventory_id", "item_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["inventory_id", 6], ["item_id", 4], ["created_at", "2023-04-10 22:46:24.635053"], ["updated_at", "2023-04-10 22:46:24.635053"]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Munição"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:69:in `block (2 levels) in perform_barter'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mInventoryItem Create (0.4ms)[0m  [1m[32mINSERT INTO "inventory_items" ("inventory_id", "item_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["inventory_id", 8], ["item_id", 4], ["created_at", "2023-04-10 22:46:24.643081"], ["updated_at", "2023-04-10 22:46:24.643081"]]
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Munição"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:68:in `block (2 levels) in perform_barter'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Load (0.2ms)[0m  [1m[34mSELECT "inventory_items".* FROM "inventory_items" WHERE "inventory_items"."inventory_id" = $1 AND "inventory_items"."item_id" = $2[0m  [["inventory_id", 6], ["item_id", 4]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Destroy (0.4ms)[0m  [1m[31mDELETE FROM "inventory_items" WHERE "inventory_items"."id" = $1[0m  [["id", 236]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Munição"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:69:in `block (2 levels) in perform_barter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mInventoryItem Create (0.3ms)[0m  [1m[32mINSERT INTO "inventory_items" ("inventory_id", "item_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["inventory_id", 8], ["item_id", 4], ["created_at", "2023-04-10 22:46:24.658669"], ["updated_at", "2023-04-10 22:46:24.658669"]]
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Medicamentos"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:68:in `block (2 levels) in perform_barter'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Load (0.3ms)[0m  [1m[34mSELECT "inventory_items".* FROM "inventory_items" WHERE "inventory_items"."inventory_id" = $1 AND "inventory_items"."item_id" = $2[0m  [["inventory_id", 6], ["item_id", 3]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mInventoryItem Destroy (0.3ms)[0m  [1m[31mDELETE FROM "inventory_items" WHERE "inventory_items"."id" = $1[0m  [["id", 232]]
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/inventory.rb:16:in `update'
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."name" = $1 LIMIT $2[0m  [["name", "Medicamentos"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/first_zombie_apocalypses_controller.rb:69:in `block (2 levels) in perform_barter'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mInventoryItem Create (0.3ms)[0m  [1m[32mINSERT INTO "inventory_items" ("inventory_id", "item_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["inventory_id", 8], ["item_id", 3], ["created_at", "2023-04-10 22:46:24.673517"], ["updated_at", "2023-04-10 22:46:24.673517"]]
+  ↳ app/models/inventory.rb:12:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/inventory.rb:12:in `update'
+Completed 200 OK in 97ms (Views: 0.1ms | ActiveRecord: 19.6ms | Allocations: 35421)
+
+
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mInventory Load (0.6ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 13], ["LIMIT", 1]]
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 8]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mInventory Load (0.2ms)[0m  [1m[34mSELECT "inventories".* FROM "inventories" WHERE "inventories"."user_id" = $1 LIMIT $2[0m  [["user_id", 11], ["LIMIT", 1]]
+  [1m[36mItem Load (0.2ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "inventory_items" ON "items"."id" = "inventory_items"."item_id" WHERE "inventory_items"."inventory_id" = $1[0m  [["inventory_id", 6]]

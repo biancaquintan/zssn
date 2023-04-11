@@ -57,14 +57,14 @@ class Api::V1::FirstZombieApocalypsesController < ApplicationController
       if validate_user_items(user_1, items_1) && validate_user_items(user_2, items_2) && validate_barter(items_1, items_2)
 
         items_1.each do |item| 
-          item[:amount].times {       
+          item[:amount].to_i.times {       
             Inventory.update(user_1, inventory_1, "remove", Item.find_by_name(item[:name]))
             Inventory.update(user_2, inventory_2, "add", Item.find_by_name(item[:name]))
           }
         end
 
         items_2.each do |item| 
-          item[:amount].times {
+          item[:amount].to_i.times {
             Inventory.update(user_2, inventory_2, "remove", Item.find_by_name(item[:name]))
             Inventory.update(user_1, inventory_1, "add", Item.find_by_name(item[:name]))
           }
@@ -74,11 +74,11 @@ class Api::V1::FirstZombieApocalypsesController < ApplicationController
       
       else
         
-        render :json => {:message => "Items doesn't match the inventory or total points per user is different"}
+        render :json => {:error_message => "Items doesn't match the inventory or total points per user is different"}
       
       end
     else
-      render :json => {:message => "Infected users cannot trade."}
+      render :json => {:error_message => "Infected users cannot trade."}
     end
   end
   
@@ -124,7 +124,7 @@ class Api::V1::FirstZombieApocalypsesController < ApplicationController
 
   def validate_user_items(user, items)
     items.each do |item|  
-      return false if user.inventory.items.to_a.count(Item.find_by_name(item[:name])) < item[:amount]
+      return false if user.inventory.items.to_a.count(Item.find_by_name(item[:name])) < item[:amount].to_i
     end
   end
 
@@ -133,11 +133,11 @@ class Api::V1::FirstZombieApocalypsesController < ApplicationController
     sum_2 = 0
     
     items_1.each do |item| 
-      sum_1 += Item.find_by_name(item[:name]).value * item[:amount]
+      sum_1 += Item.find_by_name(item[:name]).value * item[:amount].to_i
     end
 
     items_2.each do |item| 
-      sum_2 += Item.find_by_name(item[:name]).value * item[:amount]
+      sum_2 += Item.find_by_name(item[:name]).value * item[:amount].to_i
     end
     
     return sum_1 == sum_2

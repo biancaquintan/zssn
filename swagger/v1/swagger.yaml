@@ -1,0 +1,142 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/users/register":
+    post:
+      summary: register_user first_zombie_apocalypse
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+                gender:
+                  type: string
+                last_location:
+                  type: string
+                infection:
+                  type: boolean
+              required:
+              - name
+  "/api/v1/users/{id}/update_location":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    patch:
+      summary: update_location first_zombie_apocalypse
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                last_location:
+                  type: string
+  "/api/v1/users/{id}/update_inventory":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    patch:
+      summary: update_inventory first_zombie_apocalypse
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                item_name:
+                  type: string
+  "/api/v1/users/perform_barter":
+    patch:
+      summary: perform_barter first_zombie_apocalypse
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_user:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        amount:
+                          type: integer
+                second_user:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        amount:
+                          type: integer
+  "/api/v1/users/warn_infection":
+    patch:
+      summary: warn_infection first_zombie_apocalypse
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                author_id:
+                  type: integer
+                accused_user_id:
+                  type: integer
+  "/api/v1/users/users_data_report":
+    get:
+      summary: users_data_report first_zombie_apocalypse
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000/
